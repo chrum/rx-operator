@@ -1,0 +1,15 @@
+<ngx-slider
+    (userChange)="volumeChanged()"
+    [(value)]="volume"
+    [options]="volumeOptions"></ngx-slider>
+
+<select [(ngModel)]="selectedSound" (change)="onSoundChanged()">
+    <option *ngFor="let sound of sounds">
+        {{ sound }}
+    </option>
+</select>
+
+<button [disabled]="!paused" (click)="play()">Play</button>
+<button [disabled]="paused" (click)="pause()">Pause</button>
+
+

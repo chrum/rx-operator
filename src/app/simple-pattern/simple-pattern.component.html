@@ -1,0 +1,17 @@
+<div class="container">
+    <select [(ngModel)]="selectedSound" (change)="changeSound()">
+        <option *ngFor="let sound of sounds">
+            {{ sound }}
+        </option>
+    </select>
+
+
+    <div class="row align-items-start">
+        <div class="col-3" *ngFor="let i of patternFields">
+            <app-sound (toggle)="toggleStep(i, $event)"
+                [enabled]="steps[i]"
+                [position]="i"
+                [signalPosition]="signalPosition"></app-sound>
+        </div>
+    </div>
+</div>

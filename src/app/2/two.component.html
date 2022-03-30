@@ -1,0 +1,17 @@
+<button [disabled]="!paused" (click)="play()">Play</button>
+<button [disabled]="paused" (click)="pause()">Pause</button>
+
+<ngx-slider
+    (userChange)="bpmChanged()"
+    [(value)]="bpm"
+    [options]="bpmOptions"></ngx-slider>
+
+<div class="row">
+    <div class="col-6">
+        <app-indicator [active]="signal + 1"></app-indicator>
+    </div>
+    <div class="col-6">
+
+        <app-indicator [active]="signal"></app-indicator>
+    </div>
+</div>

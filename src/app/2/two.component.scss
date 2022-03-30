@@ -1,0 +1,19 @@
+:host {
+    button {
+        margin: 5px;
+        border: 2px solid white;
+        &.selected {
+            border: 2px solid black
+        }
+    }
+    app-grid {
+        visibility: collapse;
+        height: 0;
+        display: block;
+
+        &.visible {
+            visibility: visible;
+            height: auto;
+        }
+    }
+}

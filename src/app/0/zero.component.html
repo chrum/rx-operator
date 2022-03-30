@@ -1,0 +1,12 @@
+<button [disabled]="!paused" (click)="play()">Play</button>
+<button [disabled]="paused" (click)="pause()">Pause</button>
+
+<div class="row">
+    <div class="col-6">
+        <app-indicator [active]="1"></app-indicator>
+    </div>
+    <div class="col-6">
+
+        <app-indicator [active]="2"></app-indicator>
+    </div>
+</div>

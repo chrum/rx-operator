@@ -1,0 +1,26 @@
+<div class="container">
+    <select [(ngModel)]="selectedSound" (change)="changeSound()">
+        <option *ngFor="let sound of sounds">
+            {{ sound }}
+        </option>
+    </select>
+
+    <button (click)="toggleMute()">Click to {{ mute ? 'UNmute' : 'mute' }}</button>
+    <button (click)="clear()">Clear all</button>
+    <button (click)="fill()">Fill all</button>
+
+    <ngx-slider
+        (userChange)="pitchChanged()"
+        [(value)]="rate"
+        [options]="rateOptions"></ngx-slider>
+
+
+    <div class="row align-items-start">
+        <div class="col-3" *ngFor="let i of patternFields">
+            <app-sound (toggle)="toggleStep(i, $event)"
+                [enabled]="steps[i]"
+                [position]="i"
+                [signalPosition]="signalPosition"></app-sound>
+        </div>
+    </div>
+</div>

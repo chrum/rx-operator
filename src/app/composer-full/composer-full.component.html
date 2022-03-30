@@ -1,0 +1,54 @@
+<label [class.active]="externalEnabled" style="width: 100%; text-align: center">
+    External controller
+</label>
+<ngx-slider
+    (userChange)="volumeChanged()"
+    [(value)]="volume"
+    [options]="volumeOptions"></ngx-slider>
+<div class="row">
+    <div class="col-8">
+        <ngx-slider
+            (userChange)="patternVolumeChanged()"
+            [(value)]="patternVolume"
+            [options]="volumeOptions"></ngx-slider>
+        <ng-container></ng-container>
+        <button [disabled]="!(paused$ | async)" (click)="play()">Play</button>
+        <button [disabled]="(paused$ | async)" (click)="pause()">Pause</button>
+        <button (click)="cue()">Cue</button>
+        <label>
+            Metronome?
+            <input type="checkbox" [(ngModel)]="metronomeOn"/>
+        </label>
+
+
+        <ngx-slider
+            (userChange)="bpmChanged()"
+            [(value)]="bpm"
+            [options]="bpmOptions"></ngx-slider>
+
+        <ngx-slider
+            (userChange)="delayChanged()"
+            [(value)]="delay"
+            [options]="delayOptions"></ngx-slider>
+
+        <button *ngFor="let i of [1,2,3,4,5,6,7,8,9]" class="btn btn-secondary"
+                [class.selected]="currentPattern === i"
+                (click)="currentPattern = i">
+            {{ i }}
+        </button>
+
+        <app-pattern
+            [patternNum]="currentPattern"
+            [signal$]="signal$"></app-pattern>
+    </div>
+    <div class="col-1">
+    </div>
+    <div class="col-3">
+        <app-tonal-player></app-tonal-player>
+    </div>
+</div>
+
+
+
+
+

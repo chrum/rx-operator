@@ -1,0 +1,5 @@
+<div [class.current]="position === signalPosition">
+    <button type="button" class="btn btn-light"
+            (click)="onClick()"
+            [class.btn-dark]="enabled">{{ position + 1 }}</button>
+</div>
